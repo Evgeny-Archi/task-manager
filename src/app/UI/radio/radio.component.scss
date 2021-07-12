@@ -1,0 +1,58 @@
+@import "../../../assets/vars.scss";
+
+.radio-btn {
+  height: 30px;
+  padding-left: 10px;
+  display: flex;
+  align-items: center;
+
+  .label {
+    display: flex;
+    align-items: center;
+
+    &:hover {
+      cursor: pointer;
+
+      .chk_box:before {
+        border: 1px solid $accent-color;
+      }
+    }
+  }
+
+  .chk_box {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: transparent;
+    margin-right: 15px;
+    position: relative;
+    transition: all 0.2s ease;
+
+    &:before {
+      content: "";
+      display: block;
+      width: 20px;
+      height: 20px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border: 1px solid #acacac;
+      border-radius: 50%;
+      transition: all 0.2s ease;
+    }
+  }
+
+  input {
+    display: none;
+
+    &:checked + .chk_box {
+      background: $accent-color;
+    }
+
+    &:checked + .chk_box:before {
+      border: 1px solid $accent-color;
+    }
+  }
+}

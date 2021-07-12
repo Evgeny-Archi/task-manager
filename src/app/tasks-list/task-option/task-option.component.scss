@@ -1,0 +1,17 @@
+@import "../../../assets/vars.scss";
+
+.btn-wrap {
+  text-align: right;
+}
+.sorting-box {
+  margin-top: $gap;
+
+  .title {
+    margin-bottom: 10px;
+    font-size: 1em;
+    color: lighten($font-color, 10%);
+  }
+  .last_child {
+    margin-top: $gap;
+  }
+}

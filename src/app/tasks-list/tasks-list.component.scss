@@ -1,0 +1,36 @@
+@import "../../assets/vars.scss";
+
+.loader-wrap {
+  height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.tasks-wrap {
+  display: flex;
+  flex-direction: row;
+  padding: $gap 0;
+
+  @media screen and (max-width: 570px) {
+    flex-direction: column;
+  }
+}
+.tasks-config {
+  min-width: 200px;
+  flex: 20%;
+}
+.tasks-list {
+  flex: 100%;
+  margin-left: $gap;
+
+  @media screen and (max-width: 570px) {
+    margin-left: 0;
+  }
+}
+.success-message {
+  padding: 10px;
+  &_icon {
+    font-size: 1.4em;
+    color: green;
+  }
+}

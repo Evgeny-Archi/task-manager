@@ -1,0 +1,39 @@
+<div class="view-wrap">
+  <div class="buttons-wrap">
+    <div class="buttons-wrap_edit">
+      <app-button (click)="goBack()" className="secondary">Назад</app-button>
+      <app-button (click)="goEdit()" className="primary"
+        >Редактировать</app-button
+      >
+    </div>
+    <ng-container *ngIf="task$ | async as task">
+      <div class="buttons-wrap_delete">
+        <app-button (click)="deleteHandler(task.title)" className="warning"
+          >Удалить</app-button
+        >
+      </div>
+    </ng-container>
+  </div>
+
+  <div class="box view-task">
+    <div *ngIf="task$ | async as task; else loading">
+      <h3 class="title">НАЗВАНИЕ ЗАДАЧИ</h3>
+      <p class="text">{{ task.title }}</p>
+
+      <h3 class="title">ДАТА СОЗДАНИЯ</h3>
+      <p class="text">{{ task.createDate | customDate: "ruLocaleString" }}</p>
+
+      <h3 class="title">ПРИОРИТЕТ</h3>
+      <p class="text">{{ task.priority }}</p>
+
+      <h3 class="title">ОТМЕТКИ</h3>
+      <p class="text">{{ task.tag.join(", ") }}</p>
+
+      <h3 class="title">ОПИСАНИЕ</h3>
+      <p class="text">{{ task.description }}</p>
+    </div>
+  </div>
+
+  <!-- Preloader when reload page -->
+  <ng-template #loading><app-loader></app-loader></ng-template>
+</div>

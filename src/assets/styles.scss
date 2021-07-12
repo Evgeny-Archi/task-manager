@@ -1,0 +1,39 @@
+@import "./vars.scss";
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-size: 14px;
+  color: $font-color;
+  background: $body-background;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+
+  &:hover {
+    color: $accent-color;
+  }
+}
+h1,
+h2,
+h3 {
+  margin: 0;
+}
+.box {
+  margin-bottom: $gap;
+  padding: $gap;
+  background: #fff;
+  border: 1px solid $border-color;
+
+  @media screen and (max-width: 768px) {
+    padding: 15px;
+  }
+}

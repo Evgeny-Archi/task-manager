@@ -1,0 +1,53 @@
+<div class="view-wrap">
+  <app-button (click)="goBack()" className="secondary">Назад</app-button>
+
+  <div class="box edit-task">
+    <div *ngIf="task$ | async as task; else loading">
+      <form [formGroup]="taskForm" (ngSubmit)="onSubmit()">
+        <!-- Title input -->
+        <h3 class="title">НАЗВАНИЕ ЗАДАЧИ</h3>
+        <input
+          id="title"
+          type="text"
+          class="input-title"
+          formControlName="title"
+        />
+
+        <!-- Priority select -->
+        <h3 class="title">ПРИОРИТЕТ</h3>
+        <select class="select" formControlName="priority">
+          <option
+            *ngFor="let option of options"
+            [value]="option"
+            [selected]="option == task.priority"
+          >
+            {{ option }}
+          </option>
+        </select>
+
+        <!-- Tags select -->
+        <h3 class="title">ОТМЕТКИ</h3>
+        <select class="select" multiple formControlName="tag">
+          <option
+            *ngFor="let tag of tags"
+            [value]="tag"
+            [selected]="isSelected(task, tag)"
+          >
+            {{ tag }}
+          </option>
+        </select>
+
+        <!-- Description textarea -->
+        <h3 class="title">ОПИСАНИЕ</h3>
+        <textarea class="textarea" formControlName="description"> </textarea>
+
+        <div>
+          <app-button type="submit" className="primary">Сохранить</app-button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Preloader when reload page -->
+  <ng-template #loading><app-loader></app-loader></ng-template>
+</div>

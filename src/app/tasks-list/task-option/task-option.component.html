@@ -1,0 +1,50 @@
+<!-- Add task button -->
+<div class="btn-wrap">
+  <app-button (click)="addTask()" className="primary"
+    >Добавить задачу</app-button
+  >
+</div>
+<!-- Toggle sorting -->
+<div class="box sorting-box">
+  <h3 class="title">СОРТИРОВКА</h3>
+  <app-radio-input
+    name="sort"
+    id="sort_new"
+    value="new"
+    [isChecked]="true"
+    label="Новые"
+    (click)="sortHandler($event)"
+  ></app-radio-input>
+
+  <app-radio-input
+    name="sort"
+    id="sort_old"
+    value="old"
+    [isChecked]="false"
+    label="Старые"
+    (click)="sortHandler($event)"
+  ></app-radio-input>
+</div>
+<!-- Select tags -->
+<div class="box sorting-box">
+  <h3 class="title">ПРИОРИТЕТ</h3>
+  <ng-container *ngFor="let priority of priorityArr">
+    <app-checkbox-input
+      name="priority"
+      [value]="priority"
+      [isChecked]="true"
+      [label]="priority"
+      (click)="checkHandler($event)"
+    ></app-checkbox-input>
+  </ng-container>
+  <h3 class="title last_child">ОТМЕТКА</h3>
+  <ng-container *ngFor="let tag of tagsArr">
+    <app-checkbox-input
+      name="tag"
+      [value]="tag"
+      [isChecked]="true"
+      [label]="tag"
+      (click)="checkHandler($event)"
+    ></app-checkbox-input>
+  </ng-container>
+</div>

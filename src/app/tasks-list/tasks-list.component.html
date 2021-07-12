@@ -1,0 +1,35 @@
+<div class="tasks-wrap">
+  <div class="tasks-config">
+    <app-task-option (onSort)="onSort($event)"></app-task-option>
+  </div>
+
+  <div class="tasks-list">
+    <!-- Alert message when add / delete task -->
+    <div
+      class="box success-message"
+      *ngIf="alertMessage$ | async as alertMessage"
+    >
+      <span class="success-message_icon">&#x2713;</span> {{ alertMessage }}
+    </div>
+    <!-- Preloader -->
+    <div class="loader-wrap" *ngIf="loading$ | async">
+      <app-loader></app-loader>
+    </div>
+
+    <!-- Tasks. Custom sort pipe -->
+    <ng-container *ngFor="let task of tasks$ | async | sortBy: sort">
+      <app-task-item [task]="task"></app-task-item>
+    </ng-container>
+
+    <!-- Infinite scroll trigger -->
+    <div
+      infiniteScroll
+      [infiniteScrollDistance]="1"
+      [infiniteScrollThrottle]="400"
+      (scrolled)="onScroll()"
+    ></div>
+
+    <!-- Scroll preloader -->
+    <div *ngIf="scrollLoading$ | async"><app-loader></app-loader></div>
+  </div>
+</div>

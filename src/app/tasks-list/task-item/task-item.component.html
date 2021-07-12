@@ -1,0 +1,11 @@
+<!-- Tasks item -->
+<div class="box task-item">
+  <h2 class="task-item_title">
+    <a [routerLink]="['/tasks', task.id]">{{ task.title }}</a>
+  </h2>
+  <div class="task-item_description">
+    <p>Создано: {{ task.createDate | customDate: "passedTime" }}</p>
+    <p>Приоритет: {{ task.priority }}</p>
+    <p>Отметки: {{ task.tag.join(", ") }}</p>
+  </div>
+</div>
